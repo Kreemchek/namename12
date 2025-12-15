@@ -32,12 +32,14 @@ import {
   Store,
 } from "lucide-react";
 
+const easeOutBezier = [0.16, 1, 0.3, 1] as const;
+
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.7, ease: easeOutBezier },
   },
 };
 
@@ -530,7 +532,7 @@ function HeroVisual() {
         className="glow-ring-light relative h-80 w-80 rounded-[40px] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
         initial={{ opacity: 0, y: 30, rotate: -15 }}
         animate={{ opacity: 1, y: 0, rotate: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        transition={{ duration: 0.9, ease: easeOutBezier }}
       >
         <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-[#635bff]/[0.02] via-transparent to-[#00d4ff]/[0.03]" />
         <div className="absolute inset-[20px] rounded-[30px] border border-slate-100 bg-slate-50/50 p-6">
