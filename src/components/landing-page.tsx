@@ -845,7 +845,7 @@ function ComplianceSection() {
           href="https://drive.google.com/file/d/1dc-wy9iBgaOp-rgt3pll9a73wR89P4zx/view"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-col items-start gap-2 rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-900 shadow-sm transition hover:border-slate-300 hover:shadow-lg sm:gap-4 sm:p-5"
+          className="group flex w-full max-w-[320px] flex-col items-start gap-2 self-start rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-900 shadow-sm transition hover:border-slate-300 hover:shadow-lg sm:max-w-none sm:gap-4 sm:p-5"
         >
           <div className="mb-2 flex w-full items-center justify-between sm:mb-4">
             <p className="text-xs font-semibold sm:text-sm">{compliance.certificate}</p>
