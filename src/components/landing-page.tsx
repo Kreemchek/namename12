@@ -845,13 +845,13 @@ function ComplianceSection() {
           href="https://drive.google.com/file/d/1dc-wy9iBgaOp-rgt3pll9a73wR89P4zx/view"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-900 shadow-sm transition hover:border-slate-300 hover:shadow-lg sm:gap-4 sm:p-5"
+          className="group flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-900 shadow-sm transition hover:border-slate-300 hover:shadow-lg sm:items-center sm:gap-4 sm:p-5"
         >
-          <div className="mb-3 flex items-center justify-between sm:mb-4">
+          <div className="mb-3 flex w-full items-center justify-between sm:mb-4">
             <p className="text-xs font-semibold sm:text-sm">{compliance.certificate}</p>
             <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#635bff]" />
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex w-full items-center justify-start sm:justify-center">
             <Image
               src="/htp-logo.png"
               alt="High Technology Park of the Kyrgyz Republic"
