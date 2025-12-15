@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   useEffect,
@@ -49,10 +50,10 @@ const stagger = {
 
 const buttonClasses = (variant: "primary" | "secondary" = "primary") =>
   twMerge(
-    "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:px-6 sm:py-3",
     variant === "primary"
-      ? "bg-gradient-to-r from-[#6a5bff] via-[#b755ff] to-[#3ce8ff] text-white shadow-[0_10px_60px_rgba(88,82,246,0.45)] hover:scale-[1.01] focus-visible:outline-[#6a5bff]"
-      : "border border-white/30 bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white"
+      ? "bg-[#635bff] text-white shadow-lg shadow-[#635bff]/20 hover:bg-[#0a2540] hover:shadow-xl focus-visible:outline-[#635bff]"
+      : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 focus-visible:outline-slate-500"
   );
 
 const heroStats = [
@@ -353,15 +354,15 @@ export function LandingPage() {
   };
 
   return (
-    <div className="relative overflow-hidden bg-slate-950 text-slate-100">
-      <div className="gradient-grid absolute inset-0 opacity-30"></div>
+    <div className="relative overflow-hidden bg-white text-slate-900">
+      <div className="gradient-grid absolute inset-0 opacity-[0.15]"></div>
       <div className="noise-overlay"></div>
 
-      <header className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-6 sm:px-8 lg:px-0">
+      <header className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-4 sm:px-6 sm:pt-6 md:px-8 lg:px-0">
         <NavigationBar />
       </header>
 
-      <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-24 px-6 pb-24 pt-10 sm:px-8 lg:px-0">
+      <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-16 pt-8 sm:gap-20 sm:px-6 sm:pb-20 sm:pt-10 md:gap-24 md:px-8 md:pb-24 lg:px-0">
         <HeroSection />
         <CapabilitiesSection />
         <AdvantagesSection />
@@ -382,39 +383,39 @@ export function LandingPage() {
         ) : null}
       </AnimatePresence>
 
-      <footer className="relative z-10 border-t border-white/10 bg-slate-950/60 px-6 py-10 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between">
+      <footer className="relative z-10 border-t border-slate-200 bg-slate-50 px-4 py-8 sm:px-6 sm:py-10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-base font-semibold text-white">X-HUB</p>
-            <p className="text-slate-400">
+            <p className="text-base font-semibold text-slate-900">X-HUB</p>
+            <p className="text-slate-500">
               Артерия международных финансов. Современная финтех-платформа.
             </p>
           </div>
-          <div className="flex flex-wrap gap-4 text-slate-400">
+          <div className="flex flex-wrap gap-4 text-slate-600">
             <Link
               href="#contact"
-              className="transition hover:text-white"
+              className="transition hover:text-slate-900"
               prefetch={false}
             >
               Связаться
             </Link>
             <Link
               href="#pricing"
-              className="transition hover:text-white"
+              className="transition hover:text-slate-900"
               prefetch={false}
             >
               Тарифы
             </Link>
             <Link
               href="#documents"
-              className="transition hover:text-white"
+              className="transition hover:text-slate-900"
               prefetch={false}
             >
               Документы
             </Link>
             <Link
               href="#compliance"
-              className="transition hover:text-white"
+              className="transition hover:text-slate-900"
               prefetch={false}
             >
               Compliance & Legal
@@ -428,17 +429,17 @@ export function LandingPage() {
 
 function NavigationBar() {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 rounded-full border border-white/10 bg-slate-900/70 px-5 py-3 text-sm shadow-[0_20px_60px_rgba(8,16,28,0.55)] backdrop-blur lg:flex-nowrap">
-      <div className="flex items-center gap-2 text-white">
-        <div className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-[#6a5bff] to-[#3ce8ff]" />
+    <div className="flex flex-wrap items-center justify-between gap-3 rounded-full border border-slate-200 bg-white/80 px-4 py-3 text-sm shadow-[0_4px_20px_rgba(0,0,0,0.08)] backdrop-blur sm:gap-4 sm:px-5 lg:flex-nowrap">
+      <div className="flex items-center gap-2 text-slate-900">
+        <div className="h-2 w-2 animate-pulse rounded-full bg-[#635bff]" />
         <span className="text-base font-semibold tracking-tight">X-HUB</span>
       </div>
-      <div className="hidden flex-1 items-center justify-center gap-2 text-slate-300 lg:flex">
+      <div className="hidden flex-1 items-center justify-center gap-1 text-slate-600 md:gap-2 lg:flex">
         {navLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="rounded-full px-3 py-1 transition hover:text-white"
+            className="rounded-full px-2 py-1 text-xs transition hover:text-slate-900 md:px-3 md:text-sm"
             prefetch={false}
           >
             {link.label}
@@ -448,7 +449,7 @@ function NavigationBar() {
       <div className="flex items-center gap-2">
         <Link
           href="#documents"
-          className="rounded-full border border-white/20 px-4 py-2 text-white transition hover:border-white/40"
+          className="hidden rounded-full border border-slate-300 px-3 py-2 text-slate-700 transition hover:border-slate-400 hover:text-slate-900 sm:inline-flex sm:px-4"
           prefetch={false}
         >
           Документы
@@ -471,26 +472,26 @@ function HeroSection() {
       variants={fadeUp}
       initial="hidden"
       animate="show"
-      className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 via-white/0 to-transparent p-8 shadow-[0_30px_140px_rgba(15,23,42,0.65)] lg:p-12"
+      className="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 via-white to-white p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:rounded-3xl sm:p-8 lg:p-12"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#6a5bff]/40 via-transparent to-[#3ce8ff]/20 opacity-60 blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#635bff]/[0.02] via-transparent to-[#00d4ff]/[0.015] blur-3xl" />
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 opacity-30 blur-2xl [background:conic-gradient(from_180deg_at_50%_50%,rgba(58,176,255,0.35),rgba(106,91,255,0.65),transparent_70%)]" />
-        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/40 to-transparent opacity-40" />
-        <div className="absolute right-8 top-6 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-400/30 to-purple-500/40 blur-2xl" />
+        <div className="absolute inset-0 opacity-[0.03] blur-2xl [background:conic-gradient(from_180deg_at_50%_50%,rgba(58,176,255,0.15),rgba(106,91,255,0.25),transparent_70%)]" />
+        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-slate-200 to-transparent opacity-30" />
+        <div className="absolute right-8 top-6 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-400/10 to-purple-500/10 blur-2xl" />
       </div>
       <div className="relative z-10 flex flex-col gap-10 lg:flex-row lg:items-center">
         <div className="flex-1 space-y-6">
           <Badge icon={Sparkles}>Артерия международных финансов</Badge>
-          <h1 className="max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-2xl text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
             Когда мир ставит стены — X-HUB создаёт платёжные мосты.
           </h1>
-          <p className="max-w-2xl text-lg text-slate-200">
+          <p className="max-w-2xl text-base text-slate-600 sm:text-lg">
             Приём платежей, QR-эквайринг, международные переводы, API и iFrame
             интеграции, управление транзакциями, аналитика и финмониторинг —
             всё необходимое для легального бизнеса с международными клиентами.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <Link href="#contact" className={buttonClasses("primary")}>
               Подключиться
               <ArrowUpRight className="h-4 w-4" />
@@ -503,12 +504,12 @@ function HeroSection() {
             {heroStats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300"
+                className="rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-600 shadow-sm sm:p-4"
               >
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
                   {stat.label}
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-white">
+                <p className="mt-2 text-xl font-semibold text-slate-900 sm:text-2xl">
                   {stat.value}
                 </p>
                 <p>{stat.description}</p>
@@ -524,39 +525,39 @@ function HeroSection() {
 
 function HeroVisual() {
   return (
-    <div className="relative flex flex-1 items-center justify-center">
+    <div className="relative hidden flex-1 items-center justify-center lg:flex">
       <motion.div
-        className="glow-ring relative h-80 w-80 rounded-[40px] border border-white/15 bg-white/5 backdrop-blur"
+        className="glow-ring-light relative h-80 w-80 rounded-[40px] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
         initial={{ opacity: 0, y: 30, rotate: -15 }}
         animate={{ opacity: 1, y: 0, rotate: 0 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
-        <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-[#6a5bff]/20 via-transparent to-[#3ce8ff]/30" />
-        <div className="absolute inset-[20px] rounded-[30px] border border-white/10 bg-slate-900/40 p-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+        <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-[#635bff]/[0.02] via-transparent to-[#00d4ff]/[0.03]" />
+        <div className="absolute inset-[20px] rounded-[30px] border border-slate-100 bg-slate-50/50 p-6">
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
             Пульс X-HUB
           </p>
           <div className="mt-6 space-y-4">
             <MetricPill
               label="Международные платежи"
               value="+184%"
-              accent="from-[#6a5bff] to-[#b755ff]"
+              accent="from-[#635bff] to-[#0a2540]"
             />
             <MetricPill
               label="Фрод-алерты"
               value="0.01%"
-              accent="from-[#b755ff] to-[#3ce8ff]"
+              accent="from-[#0a2540] to-[#00d4ff]"
             />
             <MetricPill
               label="Скорость API"
               value="180 мс"
-              accent="from-[#3ce8ff] to-[#6a5bff]"
+              accent="from-[#00d4ff] to-[#635bff]"
             />
           </div>
         </div>
       </motion.div>
       <motion.div
-        className="absolute -right-6 -top-6 rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm text-white shadow-lg backdrop-blur"
+        className="absolute -right-6 -top-6 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700 shadow-lg"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
@@ -564,7 +565,7 @@ function HeroVisual() {
         API uptime · 99,95%
       </motion.div>
       <motion.div
-        className="absolute -left-4 bottom-0 rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm text-white shadow-lg backdrop-blur"
+        className="absolute -left-4 bottom-0 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700 shadow-lg"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.75, duration: 0.5 }}
@@ -585,8 +586,8 @@ function MetricPill({
   accent: string;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm">
-      <p className="text-slate-300">{label}</p>
+    <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm shadow-sm">
+      <p className="text-slate-600">{label}</p>
       <span
         className={`bg-gradient-to-r ${accent} bg-clip-text text-base font-semibold text-transparent`}
       >
@@ -604,8 +605,8 @@ function Badge({
   icon?: ElementType;
 }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
-      {Icon ? <Icon className="h-3 w-3" /> : null}
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-slate-700 sm:gap-2 sm:px-4 sm:text-xs sm:tracking-[0.3em]">
+      {Icon ? <Icon className="h-2.5 w-2.5 sm:h-3 sm:w-3" /> : null}
       {children}
     </span>
   );
@@ -624,7 +625,7 @@ function CapabilitiesSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="grid gap-6 md:grid-cols-2"
+        className="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6"
       >
         {capabilities.map((capability) => {
           const Icon = capability.icon;
@@ -632,20 +633,20 @@ function CapabilitiesSection() {
             <motion.div
               key={capability.title}
               variants={fadeUp}
-              className="group h-full rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 shadow-[0_20px_60px_rgba(8,16,28,0.45)] transition hover:border-white/30"
+              className="group h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition hover:border-slate-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] sm:rounded-3xl sm:p-6"
             >
-              <div className="flex items-center gap-3">
-                <div className="rounded-2xl border border-white/20 bg-white/10 p-3 text-white">
-                  <Icon className="h-5 w-5" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-2 text-slate-700 sm:rounded-2xl sm:p-3">
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <span className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-slate-500 sm:text-xs sm:tracking-[0.3em]">
                   {capability.badge}
                 </span>
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-white">
+              <h3 className="mt-3 text-lg font-semibold text-slate-900 sm:mt-4 sm:text-xl">
                 {capability.title}
               </h3>
-              <p className="mt-2 text-sm text-slate-300">
+              <p className="mt-2 text-sm text-slate-600">
                 {capability.description}
               </p>
             </motion.div>
@@ -669,18 +670,18 @@ function AdvantagesSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4"
       >
         {advantages.map((advantage) => (
           <motion.div
             key={advantage.title}
             variants={fadeUp}
-            className="rounded-3xl border border-white/10 bg-white/5 p-5"
+            className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:rounded-3xl sm:p-5"
           >
-            <h3 className="text-lg font-semibold text-white">
+            <h3 className="text-base font-semibold text-slate-900 sm:text-lg">
               {advantage.title}
             </h3>
-            <p className="mt-3 text-sm text-slate-300">
+            <p className="mt-2 text-sm text-slate-600 sm:mt-3">
               {advantage.description}
             </p>
           </motion.div>
@@ -708,21 +709,21 @@ function IndustriesSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
-              className="rounded-3xl border border-white/10 bg-slate-900/40 p-6 shadow-[0_20px_60px_rgba(8,16,28,0.5)]"
+              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] sm:rounded-3xl sm:p-6"
             >
-              <div className="flex items-center gap-3">
-                <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
-                  <Icon className="h-5 w-5 text-white" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-2 sm:rounded-2xl sm:p-3">
+                  <Icon className="h-4 w-4 text-slate-700 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-base font-semibold text-slate-900 sm:text-lg">
                   {industry.title}
                 </h3>
               </div>
-              <p className="mt-3 text-sm text-slate-300">{industry.description}</p>
-              <ul className="mt-4 space-y-1 text-sm text-slate-200">
+              <p className="mt-2 text-sm text-slate-600 sm:mt-3">{industry.description}</p>
+              <ul className="mt-3 space-y-1 text-xs text-slate-700 sm:mt-4 sm:text-sm">
                 {industry.points.map((point) => (
                   <li key={point} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6a5bff] to-[#3ce8ff]" />
+                    <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#635bff]" />
                     {point}
                   </li>
                 ))}
@@ -743,7 +744,7 @@ function StepsSection() {
         title="Простые шаги, чтобы начать приём платежей"
         description="Знакомство, KYB, интеграция и обучение — прозрачный путь запуска."
       />
-      <div className="relative grid gap-6 lg:grid-cols-4">
+      <div className="relative grid gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-4">
         {steps.map((step, index) => {
           const Icon = step.icon;
           return (
@@ -753,18 +754,18 @@ function StepsSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6"
+              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:rounded-3xl sm:p-6"
             >
-              <div className="flex items-center gap-3">
-                <div className="rounded-2xl border border-white/20 bg-white/10 p-3">
-                  <Icon className="h-5 w-5 text-white" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-2 sm:rounded-2xl sm:p-3">
+                  <Icon className="h-4 w-4 text-slate-700 sm:h-5 sm:w-5" />
                 </div>
-                <span className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-slate-500 sm:text-xs sm:tracking-[0.3em]">
                   Шаг {index + 1}
                 </span>
               </div>
-              <h3 className="mt-4 text-xl font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm text-slate-300">{step.description}</p>
+              <h3 className="mt-3 text-lg font-semibold text-slate-900 sm:mt-4 sm:text-xl">{step.title}</h3>
+              <p className="mt-2 text-sm text-slate-600">{step.description}</p>
             </motion.div>
           );
         })}
@@ -781,7 +782,7 @@ function PricingSection() {
         title="Прозрачные условия для каждого кейса"
         description="QR-платежи от 3.5%, интернет-эквайринг от 4.5%, международный эквайринг от 5.5%."
       />
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
         {pricing.map((plan) => (
           <motion.div
             key={plan.title}
@@ -790,28 +791,28 @@ function PricingSection() {
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
             className={twMerge(
-              "rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_30px_60px_rgba(8,16,28,0.45)]",
-              plan.featured && "border-white/40 bg-white/10 lg:-translate-y-4"
+              "rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] sm:rounded-3xl sm:p-6",
+              plan.featured && "border-[#635bff] bg-gradient-to-b from-[#635bff]/[0.02] to-white shadow-[0_8px_24px_rgba(99,91,255,0.12)] lg:-translate-y-4"
             )}
           >
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+            <p className="text-[0.65rem] uppercase tracking-[0.2em] text-slate-500 sm:text-xs sm:tracking-[0.3em]">
               {plan.subtitle}
             </p>
-            <h3 className="mt-3 text-2xl font-semibold text-white">
+            <h3 className="mt-2 text-xl font-semibold text-slate-900 sm:mt-3 sm:text-2xl">
               {plan.title}
             </h3>
-            <p className="mt-2 text-3xl font-light text-white">
+            <p className="mt-1 text-2xl font-light text-slate-900 sm:mt-2 sm:text-3xl">
               {plan.percent}
             </p>
-            <ul className="mt-6 space-y-3 text-sm text-slate-200">
+            <ul className="mt-4 space-y-2 text-sm text-slate-700 sm:mt-6 sm:space-y-3">
               {plan.features.map((feature) => (
                 <li key={feature} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6a5bff] to-[#3ce8ff]" />
+                  <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#635bff]" />
                   {feature}
                 </li>
               ))}
             </ul>
-            <Link href="#contact" className={twMerge(buttonClasses("primary"), "mt-6 w-full justify-center")}>
+            <Link href="#contact" className={twMerge(buttonClasses("primary"), "mt-5 w-full justify-center sm:mt-6")}>
               Запросить условия
             </Link>
           </motion.div>
@@ -825,26 +826,39 @@ function ComplianceSection() {
   return (
     <section
       id="compliance"
-      className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 shadow-[0_30px_120px_rgba(8,16,28,0.55)]"
+      className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:rounded-3xl sm:p-8"
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <Badge icon={ShieldCheck}>Compliance & Legal</Badge>
-          <h3 className="mt-4 text-3xl font-semibold text-white">
+          <h3 className="mt-4 text-2xl font-semibold text-slate-900 sm:text-3xl">
             Соблюдаем стандарты и требования регуляторов
           </h3>
-          <p className="mt-2 text-slate-200">
+          <p className="mt-2 text-sm text-slate-600 sm:text-base">
             {compliance.note}. {compliance.company}. {compliance.inn}.{" "}
             {compliance.address}.
           </p>
         </div>
-        <div className="rounded-2xl border border-white/20 bg-white/10 p-5 text-sm text-white">
-          <p>{compliance.certificate}</p>
-          <p className="mt-2 text-slate-300">
-            Подтверждаем прозрачность процессов и готовность пройти ваш due
-            diligence.
-          </p>
-        </div>
+        <Link
+          href="https://drive.google.com/file/d/1iBcJpVvXKouNvdOZpC6RBbk2ATzJMkpn/view"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-900 shadow-sm transition hover:border-slate-300 hover:shadow-lg sm:p-5"
+        >
+          <div className="mb-3 flex items-center justify-between sm:mb-4">
+            <p className="text-xs font-semibold sm:text-sm">{compliance.certificate}</p>
+            <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#635bff]" />
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              src="/htp-logo.png"
+              alt="High Technology Park of the Kyrgyz Republic"
+              width={160}
+              height={64}
+              className="object-contain sm:h-20 sm:w-[200px]"
+            />
+          </div>
+        </Link>
       </div>
     </section>
   );
@@ -867,27 +881,27 @@ function DocumentsSection({
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="grid gap-6 md:grid-cols-2"
+        className="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6"
       >
         {documents.map((doc) => (
           <motion.div
             key={doc.file}
             variants={fadeUp}
-            className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-slate-900/50 p-6 shadow-[0_25px_80px_rgba(8,16,28,0.5)]"
+            className="flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] sm:rounded-3xl sm:p-6"
           >
-            <div className="flex items-start gap-4">
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-3 text-white">
-                <FileText className="h-5 w-5" />
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-2 text-slate-700 sm:rounded-2xl sm:p-3">
+                <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-white">{doc.title}</h3>
-                <p className="mt-2 text-sm text-slate-300">{doc.description}</p>
+                <h3 className="text-base font-semibold text-slate-900 sm:text-lg">{doc.title}</h3>
+                <p className="mt-1 text-sm text-slate-600 sm:mt-2">{doc.description}</p>
               </div>
             </div>
             <button
               type="button"
               onClick={() => onOpen(doc)}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:text-cyan-200"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#635bff] transition hover:text-[#0a2540] sm:mt-6"
             >
               Открыть документ
               <ArrowUpRight className="h-4 w-4" />
@@ -953,42 +967,42 @@ function DocumentViewer({
 
   return (
     <motion.div
-      className="fixed inset-0 z-40 flex items-center justify-center px-4"
+      className="fixed inset-0 z-40 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
       <div
-        className="absolute inset-0 bg-slate-950/80 backdrop-blur"
+        className="absolute inset-0 bg-slate-900/60 backdrop-blur"
         onClick={onClose}
       />
       <motion.div
-        className="relative z-10 flex h-[80vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 text-white shadow-[0_40px_120px_rgba(0,0,0,0.7)]"
+        className="relative z-10 flex h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-[0_40px_120px_rgba(0,0,0,0.3)] sm:h-[80vh] sm:rounded-3xl"
         initial={{ scale: 0.96, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 120, damping: 20 }}
       >
-        <header className="flex items-start justify-between gap-4 border-b border-white/10 px-6 py-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+        <header className="flex items-start justify-between gap-3 border-b border-slate-200 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+          <div className="min-w-0 flex-1">
+            <p className="text-[0.65rem] uppercase tracking-[0.2em] text-slate-500 sm:text-xs sm:tracking-[0.3em]">
               Документ
             </p>
-            <h3 className="text-xl font-semibold">{doc.title}</h3>
-            <p className="text-sm text-slate-300">{doc.description}</p>
+            <h3 className="mt-1 text-base font-semibold text-slate-900 sm:text-xl">{doc.title}</h3>
+            <p className="mt-1 hidden text-sm text-slate-600 sm:block">{doc.description}</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-shrink-0 gap-2">
             <Link
               href={doc.file}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/20 px-3 py-1 text-sm text-white transition hover:border-white/40"
+              className="rounded-full border border-slate-300 px-3 py-2 text-xs text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 sm:text-sm"
             >
               PDF
             </Link>
             <button
               type="button"
               onClick={onClose}
-              className="rounded-full border border-white/20 px-3 py-1 text-sm text-white transition hover:border-white/40"
+              className="rounded-full border border-slate-300 px-3 py-2 text-xs text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 sm:text-sm"
             >
               Закрыть
             </button>
@@ -996,13 +1010,13 @@ function DocumentViewer({
         </header>
         <div className="document-frame-container flex-1">
           {isLoading ? (
-            <div className="document-frame flex items-center justify-center text-slate-300">
+            <div className="document-frame flex items-center justify-center text-slate-600">
               Загружаем документ…
             </div>
           ) : loadError ? (
-            <div className="document-frame text-red-200">{loadError}</div>
+            <div className="document-frame text-red-600">{loadError}</div>
           ) : (
-            <div className="document-frame">{content || "Документ пуст."}</div>
+            <div className="document-frame text-slate-900">{content || "Документ пуст."}</div>
           )}
         </div>
       </motion.div>
@@ -1018,17 +1032,17 @@ function ContactSection({
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }) {
   return (
-    <section id="contact" className="grid gap-8 lg:grid-cols-2">
+    <section id="contact" className="grid gap-6 sm:gap-8 lg:grid-cols-2">
       <div className="space-y-4">
         <SectionHeading
           eyebrow="Форма обратной связи"
           title="Заполните форму, чтобы узнать условия подключения"
           description="Менеджер X-HUB свяжется с вами, уточнит детали и проведёт по этапам запуска."
         />
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-300">
-          <p>ОсОО «Алтынкопрю» · {compliance.inn}</p>
-          <p className="mt-2">{compliance.address}</p>
-          <p className="mt-2 text-slate-400">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600 sm:rounded-3xl sm:p-6">
+          <p className="text-xs sm:text-sm">ОсОО «Алтынкопрю» · {compliance.inn}</p>
+          <p className="mt-2 text-xs sm:text-sm">{compliance.address}</p>
+          <p className="mt-2 text-xs text-slate-500 sm:text-sm">
             Команда поддержки отвечает в течение рабочего дня.
           </p>
         </div>
@@ -1039,59 +1053,59 @@ function ContactSection({
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-[0_20px_80px_rgba(8,16,28,0.55)]"
+        className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:rounded-3xl sm:p-6"
       >
         <div className="grid gap-4">
-          <label className="text-sm text-slate-200">
+          <label className="text-sm text-slate-700">
             Компания
             <input
               type="text"
               required
               placeholder="Название компании"
-              className="mt-1 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#635bff] focus:outline-none focus:ring-2 focus:ring-[#635bff]/20 sm:rounded-2xl sm:px-4 sm:py-3"
             />
           </label>
-          <label className="text-sm text-slate-200">
+          <label className="text-sm text-slate-700">
             Имя и роль
             <input
               type="text"
               required
               placeholder="Мария, FinOps Lead"
-              className="mt-1 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#635bff] focus:outline-none focus:ring-2 focus:ring-[#635bff]/20 sm:rounded-2xl sm:px-4 sm:py-3"
             />
           </label>
-          <label className="text-sm text-slate-200">
+          <label className="text-sm text-slate-700">
             Рабочий e-mail
             <input
               type="email"
               required
               placeholder="finance@company.com"
-              className="mt-1 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#635bff] focus:outline-none focus:ring-2 focus:ring-[#635bff]/20 sm:rounded-2xl sm:px-4 sm:py-3"
             />
           </label>
-          <label className="text-sm text-slate-200">
+          <label className="text-sm text-slate-700">
             Средний оборот в месяц
             <input
               type="text"
               placeholder="Например, 250 000 $"
-              className="mt-1 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#635bff] focus:outline-none focus:ring-2 focus:ring-[#635bff]/20 sm:rounded-2xl sm:px-4 sm:py-3"
             />
           </label>
-          <label className="text-sm text-slate-200">
+          <label className="text-sm text-slate-700">
             Расскажите о кейсе
             <textarea
               rows={4}
               placeholder="Опишите товары/услуги, географии клиентов и текущие боли."
-              className="mt-1 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#635bff] focus:outline-none focus:ring-2 focus:ring-[#635bff]/20 sm:rounded-2xl sm:px-4 sm:py-3"
             ></textarea>
           </label>
         </div>
-        <button type="submit" className={`${buttonClasses("primary")} mt-6 w-full justify-center`}>
+        <button type="submit" className={`${buttonClasses("primary")} mt-5 w-full justify-center sm:mt-6`}>
           Отправить заявку
           <ArrowUpRight className="h-4 w-4" />
         </button>
         <p
-          className="mt-3 text-center text-sm text-slate-400"
+          className="mt-2 text-center text-xs text-slate-500 sm:mt-3 sm:text-sm"
           aria-live="polite"
         >
           {formState === "sent"
@@ -1115,8 +1129,8 @@ function SectionHeading({
   return (
     <div className="space-y-3">
       <Badge>{eyebrow}</Badge>
-      <h2 className="text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
-      <p className="text-base text-slate-300">{description}</p>
+      <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl md:text-4xl">{title}</h2>
+      <p className="text-sm text-slate-600 sm:text-base">{description}</p>
     </div>
   );
 }

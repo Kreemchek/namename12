@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "X-HUB — Артерия международных финансов",
   description:
     "Приём платежей, QR-эквайринг, международные переводы, API-интеграции и финмониторинг для легального бизнеса с международными платежами.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
   openGraph: {
     title: "X-HUB — Артерия международных финансов",
     description:
@@ -42,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${onest.variable} ${inter.variable} bg-slate-950 text-slate-100 antialiased`}
+        className={`${onest.variable} ${inter.variable} bg-white text-slate-900 antialiased`}
       >
         {children}
       </body>
