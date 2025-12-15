@@ -842,7 +842,7 @@ function ComplianceSection() {
           </p>
         </div>
         <Link
-          href="https://drive.google.com/file/d/1iBcJpVvXKouNvdOZpC6RBbk2ATzJMkpn/view"
+          href="https://drive.google.com/file/d/1dc-wy9iBgaOp-rgt3pll9a73wR89P4zx/view"
           target="_blank"
           rel="noopener noreferrer"
           className="group rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-900 shadow-sm transition hover:border-slate-300 hover:shadow-lg sm:p-5"
